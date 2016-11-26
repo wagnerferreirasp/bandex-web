@@ -1,4 +1,4 @@
-package br.com.usp.ime.bandex.entity;
+package br.com.usp.ime.bandex.restaurant;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Class that represents the operating hours of a restaurant.
  */
-public class OperatingHours {
+public class OperatingHour {
 
     private LocalTime startTime;
     private LocalTime endTime;
@@ -25,7 +25,7 @@ public class OperatingHours {
         return daysOfWeek;
     }
 
-    public OperatingHours(LocalTime startTime, LocalTime endTime, ArrayList<DayOfWeek> daysOfWeek) {
+    public OperatingHour(LocalTime startTime, LocalTime endTime, ArrayList<DayOfWeek> daysOfWeek) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.daysOfWeek = daysOfWeek;

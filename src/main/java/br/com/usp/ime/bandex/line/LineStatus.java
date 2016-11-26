@@ -1,16 +1,18 @@
-package br.com.usp.ime.bandex.entity;
+package br.com.usp.ime.bandex.line;
+
+import br.com.usp.ime.bandex.restaurant.Restaurant;
 
 import java.util.Date;
 
 /**
  * Class to represent the line status of a restaurant.
  */
-public class Line {
+public class LineStatus {
     private int status;
     private Date time;
     private Restaurant restaurant;
 
-    public Line(int status, Date time, Restaurant restaurant) {
+    public LineStatus(int status, Date time, Restaurant restaurant) {
         this.status = status;
         this.time = time;
         this.restaurant = restaurant;
