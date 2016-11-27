@@ -30,9 +30,6 @@ public class RestaurantBO {
     private boolean isNowAnOperatingHour(Restaurant restaurant) {
         LocalDateTime now = LocalDateTime.now();
         ArrayList<OperatingHour> operatingHours = restaurant.getOperatingHours();
-        if (operatingHours == null) {
-            return false;
-        }
 
         for (OperatingHour operatingHour : operatingHours) {
             ArrayList<DayOfWeek> daysOfWeek = operatingHour.getDaysOfWeek();
@@ -49,11 +46,8 @@ public class RestaurantBO {
 
     private boolean isTodayAClosingDate(Restaurant restaurant) {
         ArrayList<ClosingDate> closingDates = restaurant.getClosingDates();
-        if (closingDates == null) {
-            return false;
-        }
-
         LocalDate today = LocalDate.now();
+
         for (ClosingDate closingDate : closingDates) {
             if (today.equals(closingDate.getDate())) {
                 return true;

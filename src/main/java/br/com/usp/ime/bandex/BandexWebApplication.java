@@ -51,6 +51,6 @@ public class BandexWebApplication {
 
         ArrayList<OperatingHour> operatingHours = new ArrayList<>();
         operatingHours.add(operatingHour);
-        return new Restaurant(2, operatingHours, null);
+        return new Restaurant(2, operatingHours, new ArrayList<>());
     }
 }

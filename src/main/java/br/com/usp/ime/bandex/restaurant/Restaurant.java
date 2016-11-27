@@ -1,5 +1,6 @@
 package br.com.usp.ime.bandex.restaurant;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +12,9 @@ public class Restaurant {
     private ArrayList<OperatingHour> operatingHours;
     private ArrayList<ClosingDate> closingDates;
 
-    public Restaurant(int restaurantId, ArrayList<OperatingHour> operatingHours, ArrayList<ClosingDate> closingDates) {
+    public Restaurant(int restaurantId,
+                      @NotNull ArrayList<OperatingHour> operatingHours,
+                      @NotNull ArrayList<ClosingDate> closingDates) {
         this.restaurantId = restaurantId;
         this.operatingHours = operatingHours;
         this.closingDates = closingDates;
