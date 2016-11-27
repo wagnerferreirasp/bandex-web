@@ -12,7 +12,8 @@ import org.springframework.context.annotation.Bean;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @SpringBootApplication
 public class BandexWebApplication {
@@ -45,12 +46,9 @@ public class BandexWebApplication {
     public Restaurant fakeRestaurant() {
         LocalTime start = LocalTime.parse("20:10:15");
         LocalTime end = LocalTime.parse("21:40:15");
-        ArrayList<DayOfWeek> days = new ArrayList<>();
-        days.add(DayOfWeek.SATURDAY);
-        OperatingHour operatingHour = new OperatingHour(start, end, days);
+        List<DayOfWeek> days = Collections.singletonList(DayOfWeek.SATURDAY);
 
-        ArrayList<OperatingHour> operatingHours = new ArrayList<>();
-        operatingHours.add(operatingHour);
-        return new Restaurant(2, operatingHours, new ArrayList<>());
+        List<OperatingHour> operatingHours = Collections.singletonList(new OperatingHour(start, end, days));
+        return new Restaurant(2, operatingHours, Collections.emptyList());
     }
 }

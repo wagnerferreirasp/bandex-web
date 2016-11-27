@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by wagner on 21/11/16.
@@ -29,10 +29,10 @@ public class RestaurantBO {
 
     private boolean isNowAnOperatingHour(Restaurant restaurant) {
         LocalDateTime now = LocalDateTime.now();
-        ArrayList<OperatingHour> operatingHours = restaurant.getOperatingHours();
+        List<OperatingHour> operatingHours = restaurant.getOperatingHours();
 
         for (OperatingHour operatingHour : operatingHours) {
-            ArrayList<DayOfWeek> daysOfWeek = operatingHour.getDaysOfWeek();
+            List<DayOfWeek> daysOfWeek = operatingHour.getDaysOfWeek();
             if (daysOfWeek.contains(now.getDayOfWeek())) {
                 LocalDateTime opening = DateHelper.getTodayWithTime(operatingHour.getStartTime());
                 LocalDateTime closing = DateHelper.getTodayWithTime(operatingHour.getEndTime());
@@ -45,7 +45,7 @@ public class RestaurantBO {
     }
 
     private boolean isTodayAClosingDate(Restaurant restaurant) {
-        ArrayList<ClosingDate> closingDates = restaurant.getClosingDates();
+        List<ClosingDate> closingDates = restaurant.getClosingDates();
         LocalDate today = LocalDate.now();
 
         for (ClosingDate closingDate : closingDates) {
