@@ -12,6 +12,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class LineStatusBO {
 
+    public static final int MINIMUM_LINE_STATUS = 0;
+    public static final int MAXIMUM_LINE_STATUS = 4;
+    
     @Autowired
     private LineStatusRepository lineStatusRepository;
 
@@ -20,10 +23,11 @@ public class LineStatusBO {
 
     public boolean isValid(LineStatus lineStatus) {
         Restaurant restaurant = lineStatus.getRestaurant();
-        return (lineStatus.getStatus() >= 0)
-                && (lineStatus.getStatus() < 5)
-                && restaurantBO.isValid(restaurant)
-                && restaurantBO.isOpen(restaurant);
+        return 
+            (lineStatus.getStatus() >= MINIMUM_LINE_STATUS)
+            && (lineStatus.getStatus() <= MAXIMUM_LINE_STATUS)
+            && restaurantBO.isValid(restaurant)
+            && restaurantBO.isOpen(restaurant);
     }
 
     public void insert(LineStatus lineStatus) throws InvalidLineException {
