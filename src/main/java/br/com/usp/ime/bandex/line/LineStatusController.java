@@ -27,10 +27,16 @@ public class LineStatusController {
     private RestaurantBO restaurantBO;
 
     @RequestMapping(value = "post_line_status", method = RequestMethod.POST)
-    public ResponseEntity<LineStatus> sendLine(@RequestParam(value = "status") int status,
-                                               @RequestParam(value = "restaurant_id") int restaurantId) {
+    public ResponseEntity<LineStatus> sendLine(
+        @RequestParam(value = "status") int status,
+        @RequestParam(value = "restaurant_id") int restaurantId
+    ) {
         Restaurant restaurant = restaurantBO.get(restaurantId);
-        LineStatus lineStatus = new LineStatus(status, Calendar.getInstance().getTime(), restaurant);
+        LineStatus lineStatus = new LineStatus(
+            status, 
+            Calendar.getInstance().getTime(), 
+            restaurant
+        );
         try {
             lineStatusBO.insert(lineStatus);
         } catch (InvalidLineException e) {
