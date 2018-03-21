@@ -26,7 +26,6 @@ public class LineStatusBO {
         return 
             (lineStatus.getStatus() >= MINIMUM_LINE_STATUS)
             && (lineStatus.getStatus() <= MAXIMUM_LINE_STATUS)
-            && restaurantBO.isValid(restaurant)
             && restaurantBO.isOpen(restaurant);
     }
 
