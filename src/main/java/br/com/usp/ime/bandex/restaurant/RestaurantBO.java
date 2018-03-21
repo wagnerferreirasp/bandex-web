@@ -16,12 +16,6 @@ public class RestaurantBO {
     @Autowired
     private RestaurantRepository restaurantRepository;
 
-    public boolean isValid(Restaurant restaurant) {
-        int maxRestaurantId = restaurantRepository.getMaximumRestaurantId();
-        return restaurant.getRestaurantId() >= 0
-                && restaurant.getRestaurantId() <= maxRestaurantId;
-    }
-
     public boolean isOpen(Restaurant restaurant) {
         return (!isTodayAClosingDate(restaurant)
                 && isNowAnOperatingHour(restaurant));
