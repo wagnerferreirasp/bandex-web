@@ -1,42 +1,36 @@
 package br.com.usp.ime.bandex.line;
 
 import br.com.usp.ime.bandex.restaurant.Restaurant;
+import lombok.Builder;
+import lombok.Getter;
 
+import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.util.Date;
 
 /**
  * Class to represent the line status of a restaurant.
  */
+@Getter
+@Builder
+@Entity
 public class LineStatus {
-    private int status;
-    private Date time;
-    private Restaurant restaurant;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
-    public LineStatus(int status, Date time, Restaurant restaurant) {
-        this.status = status;
-        this.time = time;
-        this.restaurant = restaurant;
-    }
+    @Min(0) @Max(4)
+    int status;
 
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
+    @Temporal(TemporalType.TIMESTAMP)
+    Date time;
 
-    public int getStatus() {
-        return status;
-    }
+    @OneToOne
+    Restaurant restaurant;
 
-    public Date getTime() {
-        return time;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString()
-            + "["
-                + "status=" + status
-                + ", restaurantId=" + restaurant.getRestaurantId()
-                + ", time=" + time
-            + "]";
+    @PrePersist
+    private void prePersistNowDate() {
+        this.time = new Date();
     }
 }
