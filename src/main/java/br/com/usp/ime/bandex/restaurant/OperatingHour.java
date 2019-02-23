@@ -1,6 +1,9 @@
 package br.com.usp.ime.bandex.restaurant;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.time.DayOfWeek;
@@ -11,7 +14,8 @@ import java.util.List;
  * Class that represents the operating hours of a restaurant.
  */
 @Entity
-@Data
+@Getter
+@Builder
 public class OperatingHour {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

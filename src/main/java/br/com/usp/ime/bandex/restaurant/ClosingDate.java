@@ -1,6 +1,7 @@
 package br.com.usp.ime.bandex.restaurant;
 
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 @Getter
 @EqualsAndHashCode
 @Entity
+@AllArgsConstructor
 public class ClosingDate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,6 +1,7 @@
 package br.com.usp.ime.bandex.restaurant;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ import java.util.List;
  */
 @Getter
 @AllArgsConstructor
+@Builder
 @Entity
 public class Restaurant {
     @Id
